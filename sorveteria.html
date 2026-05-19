@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sorveteria</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#ffe4f1;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    color:#d63384;
+}
+
+.busca{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+.sorvetes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color:#ff4d6d;
+}
+
+button{
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e63956;
+}
+
+.pedido{
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🍦 Sorveteria</h1>
+
+<input
+type="text"
+id="buscar"
+class="busca"
+placeholder="Buscar sabor..."
+onkeyup="buscarSorvete()"
+>
+
+<div class="sorvetes">
+
+<div class="card">
+<h2>Chocolate</h2>
+<p>R$ 10,00</p>
+<button onclick="adicionarPedido('Chocolate',10)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Morango</h2>
+<p>R$ 12,00</p>
+<button onclick="adicionarPedido('Morango',12)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Baunilha</h2>
+<p>R$ 9,00</p>
+<button onclick="adicionarPedido('Baunilha',9)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Limão</h2>
+<p>R$ 11,00</p>
+<button onclick="adicionarPedido('Limão',11)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Nutella</h2>
+<p>R$ 15,00</p>
+<button onclick="adicionarPedido('Nutella',15)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Oreo</h2>
+<p>R$ 14,00</p>
+<button onclick="adicionarPedido('Oreo',14)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Coco</h2>
+<p>R$ 13,00</p>
+<button onclick="adicionarPedido('Coco',13)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Flocos</h2>
+<p>R$ 10,00</p>
+<button onclick="adicionarPedido('Flocos',10)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+<div class="card">
+<h2>Pistache</h2>
+<p>R$ 18,00</p>
+<button onclick="adicionarPedido('Pistache',18)">
+Adicionar ao Carrinho
+</button>
+</div>
+
+</div>
+
+<div class="pedido">
+
+<h2>🛒 Carrinho</h2>
+
+<ul id="listaPedidos"></ul>
+
+<h3 id="total">
+Total: R$ 0,00
+</h3>
+
+</div>
+
+<script>
+
+function buscarSorvete(){
+
+let input =
+document.getElementById('buscar')
+.value
+.toLowerCase();
+
+let cards =
+document.getElementsByClassName('card');
+
+for(let i = 0; i < cards.length; i++){
+
+let titulo =
+cards[i].getElementsByTagName('h2')[0];
+
+if(
+titulo.innerHTML
+.toLowerCase()
+.indexOf(input) > -1
+){
+cards[i].style.display = '';
+
+}else{
+cards[i].style.display = 'none';
+}
+}
+}
+
+let total = 0;
+
+function adicionarPedido(sabor, preco){
+
+let lista =
+document.getElementById('listaPedidos');
+
+let item =
+document.createElement('li');
+
+item.textContent =
+sabor + ' - R$ ' + preco + ',00';
+
+lista.appendChild(item);
+
+total += preco;
+
+document.getElementById('total')
+.innerHTML =
+'Total: R$ ' + total + ',00';
+}
+
+</script>
+
+</body>
+</html>
