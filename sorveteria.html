@@ -4,55 +4,86 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sorveteria</title>
+<title>🍦 Sorveteria Premium</title>
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background:#ffe4f1;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ffe4f1,#fff0f5);
     padding:20px;
 }
 
 h1{
     text-align:center;
     color:#d63384;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
 }
 
 .busca{
     width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    margin-bottom:20px;
+    padding:14px;
+    border-radius:12px;
+    border:2px solid #ffc2d1;
+    margin-bottom:25px;
     font-size:16px;
 }
 
 .sorvetes{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
 
 .card{
     background:white;
-    border-radius:15px;
-    padding:15px;
+    border-radius:20px;
+    padding:20px;
     text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.emoji{
+    font-size:50px;
 }
 
 .card h2{
     color:#ff4d6d;
+    margin:10px 0;
+}
+
+.preco{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
 }
 
 button{
     background:#ff4d6d;
     color:white;
     border:none;
-    padding:10px;
-    border-radius:10px;
+    padding:12px;
+    border-radius:12px;
     cursor:pointer;
+    font-size:15px;
+    transition:0.3s;
 }
 
 button:hover{
@@ -60,10 +91,45 @@ button:hover{
 }
 
 .pedido{
-    margin-top:30px;
+    margin-top:35px;
     background:white;
-    padding:20px;
-    border-radius:15px;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+#listaPedidos li{
+    margin-bottom:8px;
+}
+
+#total{
+    margin-top:15px;
+    color:#ff4d6d;
+}
+
+.finalizar{
+    margin-top:20px;
+    width:100%;
+    background:#28a745;
+}
+
+.finalizar:hover{
+    background:#218838;
+}
+
+.botoes{
+    margin-top:25px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.usuario{
+    text-align:center;
+    margin-top:20px;
+    color:#056dff;
+    font-weight:bold;
 }
 
 </style>
@@ -71,7 +137,11 @@ button:hover{
 
 <body>
 
-<h1>🍦 Sorveteria</h1>
+<h1>🍦 Sorveteria Premium</h1>
+
+<p class="subtitulo">
+Os melhores sabores da cidade!
+</p>
 
 <input
 type="text"
@@ -84,74 +154,110 @@ onkeyup="buscarSorvete()"
 <div class="sorvetes">
 
 <div class="card">
+<div class="emoji">🍫</div>
 <h2>Chocolate</h2>
-<p>R$ 10,00</p>
+<p class="preco">R$ 10,00</p>
 <button onclick="adicionarPedido('Chocolate',10)">
-Adicionar ao Carrinho
+Adicionar
 </button>
 </div>
 
 <div class="card">
+<div class="emoji">🍓</div>
 <h2>Morango</h2>
-<p>R$ 12,00</p>
+<p class="preco">R$ 12,00</p>
 <button onclick="adicionarPedido('Morango',12)">
-Adicionar ao Carrinho
+Adicionar
 </button>
 </div>
 
 <div class="card">
+<div class="emoji">🍦</div>
 <h2>Baunilha</h2>
-<p>R$ 9,00</p>
+<p class="preco">R$ 9,00</p>
 <button onclick="adicionarPedido('Baunilha',9)">
-Adicionar ao Carrinho
+Adicionar
 </button>
 </div>
 
 <div class="card">
+<div class="emoji">🍋</div>
 <h2>Limão</h2>
-<p>R$ 11,00</p>
+<p class="preco">R$ 11,00</p>
 <button onclick="adicionarPedido('Limão',11)">
-Adicionar ao Carrinho
+Adicionar
 </button>
 </div>
 
 <div class="card">
-<h2>Nutella</h2>
-<p>R$ 15,00</p>
-<button onclick="adicionarPedido('Nutella',15)">
-Adicionar ao Carrinho
-</button>
-</div>
-
-<div class="card">
+<div class="emoji">🍪</div>
 <h2>Oreo</h2>
-<p>R$ 14,00</p>
+<p class="preco">R$ 14,00</p>
 <button onclick="adicionarPedido('Oreo',14)">
-Adicionar ao Carrinho
+Adicionar
 </button>
 </div>
 
 <div class="card">
-<h2>Coco</h2>
-<p>R$ 13,00</p>
-<button onclick="adicionarPedido('Coco',13)">
-Adicionar ao Carrinho
+<div class="emoji">🫐</div>
+<h2>Blueberry</h2>
+<p class="preco">R$ 17,00</p>
+<button onclick="adicionarPedido('Blueberry',17)">
+Adicionar
 </button>
 </div>
 
 <div class="card">
-<h2>Flocos</h2>
-<p>R$ 10,00</p>
-<button onclick="adicionarPedido('Flocos',10)">
-Adicionar ao Carrinho
+<div class="emoji">🍫</div>
+<h2>Brownie</h2>
+<p class="preco">R$ 18,00</p>
+<button onclick="adicionarPedido('Brownie',18)">
+Adicionar
 </button>
 </div>
 
 <div class="card">
-<h2>Pistache</h2>
-<p>R$ 18,00</p>
-<button onclick="adicionarPedido('Pistache',18)">
-Adicionar ao Carrinho
+<div class="emoji">🥛</div>
+<h2>Leite Ninho</h2>
+<p class="preco">R$ 19,00</p>
+<button onclick="adicionarPedido('Leite Ninho',19)">
+Adicionar
+</button>
+</div>
+
+<div class="card">
+<div class="emoji">🍌</div>
+<h2>Banana</h2>
+<p class="preco">R$ 18,00</p>
+<button onclick="adicionarPedido('Banana',18)">
+Adicionar
+</button>
+</div>
+
+<div class="card">
+<div class="emoji">🍎</div>
+<h2>Fruta Vermelha</h2>
+<p class="preco">R$ 18,00</p>
+<button onclick="adicionarPedido('Fruta Vermelha',18)">
+Adicionar
+</button>
+</div>
+
+<div class="card">
+<div class="emoji">🌾</div>
+<h2>Granola</h2>
+<p class="preco">R$ 10,00</p>
+<button onclick="adicionarPedido('Granola',10)">
+Adicionar
+</button>
+</div>
+
+<div class="card">
+<div class="emoji">🥜</div>
+<h2>Amendoim</h2>
+<p class="preco">R$ 18,00</p>
+<button onclick="adicionarPedido('Amendoim',18)">
+Adicionar
 </button>
 </div>
 
@@ -167,58 +273,141 @@ Adicionar ao Carrinho
 Total: R$ 0,00
 </h3>
 
+<button class="finalizar" onclick="finalizarPedido()">
+✅ Finalizar Pedido
+</button>
+
 </div>
+
+<div class="botoes">
+
+<button onclick="fazerLogin()">
+👤 Entrar
+</button>
+
+<button onclick="abrirAjuda()">
+❓ Ajuda
+</button>
+
+</div>
+
+<h3 id="usuario" class="usuario">
+👤 Nenhum usuário logado
+</h3>
 
 <script>
 
 function buscarSorvete(){
 
-let input =
-document.getElementById('buscar')
-.value
-.toLowerCase();
+    let input = document
+    .getElementById('buscar')
+    .value
+    .toLowerCase();
 
-let cards =
-document.getElementsByClassName('card');
+    let cards = document.getElementsByClassName('card');
 
-for(let i = 0; i < cards.length; i++){
+    for(let i = 0; i < cards.length; i++){
 
-let titulo =
-cards[i].getElementsByTagName('h2')[0];
+        let titulo = cards[i]
+        .getElementsByTagName('h2')[0];
 
-if(
-titulo.innerHTML
-.toLowerCase()
-.indexOf(input) > -1
-){
-cards[i].style.display = '';
+        if(
+            titulo.innerHTML
+            .toLowerCase()
+            .indexOf(input) > -1
+        ){
+            cards[i].style.display = '';
 
-}else{
-cards[i].style.display = 'none';
-}
-}
+        }else{
+            cards[i].style.display = 'none';
+        }
+
+    }
+
 }
 
 let total = 0;
 
 function adicionarPedido(sabor, preco){
 
-let lista =
-document.getElementById('listaPedidos');
+    let lista = document.getElementById('listaPedidos');
 
-let item =
-document.createElement('li');
+    let item = document.createElement('li');
 
-item.textContent =
-sabor + ' - R$ ' + preco + ',00';
+    item.textContent =
+    sabor + ' - R$ ' + preco + ',00';
 
-lista.appendChild(item);
+    lista.appendChild(item);
 
-total += preco;
+    total += preco;
 
-document.getElementById('total')
-.innerHTML =
-'Total: R$ ' + total + ',00';
+    atualizarTotal();
+
+}
+
+function atualizarTotal(){
+
+    document.getElementById('total')
+    .innerHTML =
+    'Total: R$ ' + total + ',00';
+
+}
+
+function finalizarPedido(){
+
+    if(total === 0){
+
+        alert('Seu carrinho está vazio!');
+
+        return;
+
+    }
+
+    alert('🍦 Pedido realizado com sucesso!');
+
+    document.getElementById('listaPedidos')
+    .innerHTML = '';
+
+    total = 0;
+
+    atualizarTotal();
+
+}
+
+function fazerLogin(){
+
+    let nome = prompt('Digite seu nome:');
+
+    if(nome && nome.trim() !== ''){
+
+        document.getElementById('usuario')
+        .innerHTML =
+        '👤 Usuário: ' + nome;
+
+        alert(
+            'Bem-vindo(a), ' +
+            nome +
+            '! 🍦'
+        );
+
+    }else{
+
+        alert('Digite um nome válido!');
+
+    }
+
+}
+
+function abrirAjuda(){
+
+    alert(
+        '🍦 AJUDA DA SORVETERIA\n\n' +
+        '• Busque sabores na barra de pesquisa.\n' +
+        '• Clique em Adicionar para colocar no carrinho.\n' +
+        '• Finalize o pedido no botão verde.\n' +
+        '• Faça login para entrar no sistema.'
+    );
+
 }
 
 </script>
